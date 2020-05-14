@@ -1,4 +1,5 @@
 import React from 'react';
+import DisplayMovies from './DisplayMovies';
 
 const movies = [
   {
@@ -26,17 +27,10 @@ function App() {
     <div>
       <h1>Movies</h1>
       <hr />
-      {
-        movies.map(function (movie) {
-          return (
-            <div key={movie.id}>
-              <a href={movie.url}>{movie.title} - {movie.imdbScore}</a>
-              </div>
-          )
-        })
-      }
+      <DisplayMovies movies={movies} />
     </div>
   );
 }
+
 
 export default App;
