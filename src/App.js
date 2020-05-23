@@ -22,11 +22,22 @@ const movies = [
   }
 ]
 
-function App() {
+ const App = () => {
+   const handleSearchInputChange = event => {
+     console.log(event.target.value);
+   }
+
+   const handleSearchInputKeyPress = event => {
+    if(event.key === 'Enter')
+      console.log("Enter key pressed. Search value: " + event.target.value);
+  }
+
   return (
     <div>
       <h1>Movies</h1>
       <hr />
+      <label htmlFor="searchInput">Search: </label>
+      <input id="searchInput" type="text" onChange={handleSearchInputChange} onKeyPress={handleSearchInputKeyPress}/>
       <DisplayMovies movies={movies} />
     </div>
   );
