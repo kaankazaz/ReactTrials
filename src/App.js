@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DisplayMovies from './DisplayMovies';
+import Search from './Search';
 
 const movies = [
   {
@@ -26,14 +27,8 @@ const App = () => {
   const [searchText, setSearchText] = useState('');
 
   const handleSearchInputChange = event => {
-    //console.log(event.target.value);
     setSearchText(event.target.value);
   }
-
-  //  const handleSearchInputKeyPress = event => {
-  //    if (event.key === 'Enter')
-  //      console.log("Enter key pressed. Search value: " + event.target.value);
-  //  }
 
   const filteredMovies = movies.filter(movie => {
     return movie.title.includes(searchText) || movie.url.includes(searchText)
@@ -43,8 +38,7 @@ const App = () => {
     <div>
       <h1>Movies</h1>
       <hr />
-      <label htmlFor="searchInput">Search: </label>
-      <input id="searchInput" type="text" onChange={handleSearchInputChange} />
+      <Search onSearch={handleSearchInputChange} />
       <DisplayMovies movies={filteredMovies} />
     </div>
   );
